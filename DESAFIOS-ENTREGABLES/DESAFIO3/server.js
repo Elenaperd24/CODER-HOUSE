@@ -12,24 +12,27 @@ const server = app.listen(PORT, ()=>{
 // detectar errores
 server.on('error', error => console.log(`error en servidor ${error}`))
 
+// ruta principal 
 app.get('/',(req,res)=>{
     res.send(`<h1 style="color: pink ;">Welcome to my server</h1>`)
 })
+
 
 // mostrando todos los productos con metodo getAll clase Contenedor
 app.get('/productos',(req,res)=>{
     res.send(`${JSON.stringify(productos.getAll())}`)
 }) 
 
-// seleccionar producto random con metodo getById clase Contenedor
 
+// seleccionar producto random con metodo getById clase Contenedor
 app.get('/productosRandom', (req, res) => {
 
-    const idRandom = productos.getAll().length+1
+    // saber cuantos datos hay para garantizar que siempre se mantenga en este rango de numeros
+    const idRandom = productos.getAll().length+1 
 
-    const id = Math.floor(Math.random() * (idRandom - 1) + 1)
+    // obtener id aleatorios dentro de los datos existentes para usar el getById()    
+    const id = Math.floor(Math.random() * (idRandom - 1) + 1) 
 
-    console.log(id);
     res.send(`${JSON.stringify(productos.getById(id))}`)
 })
 
