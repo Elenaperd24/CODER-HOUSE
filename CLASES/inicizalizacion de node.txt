@@ -1,0 +1,2 @@
+npm init ==> inicia un proyecto de Node
+npm i ==> Instala las dependencias del proyecto escritas en el package.json
